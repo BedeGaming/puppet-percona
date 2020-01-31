@@ -46,6 +46,8 @@ class percona::server (
   $ssl_cert = undef,
   $ssl_key = undef,
   $max_allowed_packet = "128M",
+  $log_bin_dir = undef,
+  $log_bin_file = undef,
   $log_warnings = undef,
   $log_slave_updates = false,
 ) inherits percona::params {
@@ -139,6 +141,22 @@ class percona::server (
       ensure => directory,
       owner  => 'mysql',
       group  => 'mysql',
+      require => Package[$percona_server_packages],
+      notify  => Service[$percona::params::percona_service]
+  }
+
+  file {$tmpdir:
+      ensure => directory,
+      owner  => mysql,
+      group  => mysql,
+      require => Package[$percona_server_packages],
+      notify  => Service[$percona::params::percona_service]
+      }
+
+  file {$log_bin_dir:
+      ensure => directory,
+      owner  => mysql,
+      group  => mysql,
       require => Package[$percona_server_packages],
       notify  => Service[$percona::params::percona_service]
   }
