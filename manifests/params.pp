@@ -1,7 +1,7 @@
 class percona::params {
 
   $gpgkeys = "https://repo.percona.com/yum/PERCONA-PACKAGING-KEY
-              http://www.percona.com/downloads/RPM-GPG-KEY-percona"
+  http://www.percona.com/downloads/RPM-GPG-KEY-percona"
 
   case $::osfamily {
     'RedHat': {
