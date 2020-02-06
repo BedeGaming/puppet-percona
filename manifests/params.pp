@@ -1,5 +1,8 @@
 class percona::params {
 
+  $gpgkeys = "https://repo.percona.com/yum/PERCONA-PACKAGING-KEY
+  http://www.percona.com/downloads/RPM-GPG-KEY-percona"
+
   case $::osfamily {
     'RedHat': {
       $percona_conf = '/etc/my.cnf'
@@ -10,14 +13,14 @@ class percona::params {
           descr    => "CentOS \$releasever - Percona",
           baseurl  => "http://repo.percona.com/percona/yum/release/\$releasever/RPMS/\$basearch/",
           enabled  => 1,
-          gpgkey   => "https://repo.percona.com/yum/PERCONA-PACKAGING-KEY",
+          gpgkey   => "$gpgkeys",
           gpgcheck => 1
       }
       yumrepo { "Percona-noarch":
           descr    => "CentOS \$releasever noarch - Percona",
           baseurl  => "http://repo.percona.com/percona/yum/release/\$releasever/RPMS/noarch/",
           enabled  => 1,
-          gpgkey   => "https://repo.percona.com/yum/PERCONA-PACKAGING-KEY",
+          gpgkey   => "$gpgkeys",
           gpgcheck => 1
       }
       $percona_repo = [Yumrepo['Percona'],Yumrepo['Percona-noarch']]

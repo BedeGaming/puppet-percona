@@ -208,6 +208,8 @@ class percona (
   $ssl_cert = undef,
   $ssl_key = undef,
   $max_allowed_packet = "128M",
+  $log_bin_dir = undef,
+  $log_bin_file = undef,
   $log_warnings = undef,
   $log_slave_updates = false,
 ) inherits percona::params {
@@ -259,6 +261,8 @@ class percona (
         ssl_cert                       => $ssl_cert,
         ssl_key                        => $ssl_key,
         max_allowed_packet             => $max_allowed_packet,
+        log_bin_dir                    => $log_bin_dir,
+        log_bin_file                   => $log_bin_file,
         log_warnings                   => $log_warnings,
         log_slave_updates              => $log_slave_updates,
     }
