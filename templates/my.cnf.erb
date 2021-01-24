@@ -73,6 +73,8 @@ innodb_locks_unsafe_for_binlog=<%= @innodb_locks_unsafe_for_binlog %>
 <% if @log_bin_dir %>
 log_bin = <%= @log_bin_dir %>/<%= @log_bin_file %>
 <% end %>
+max_binlog_size=<%= @max_binlog_size %>
+max_binlog_files=<%= @max_binlog_files %>
 
 # Disabling symbolic-links is recommended to prevent assorted security risks;
 # to do so, uncomment this line:

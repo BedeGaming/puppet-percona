@@ -212,6 +212,8 @@ class percona (
   $log_bin_file = undef,
   $log_warnings = undef,
   $log_slave_updates = false,
+  $max_binlog_files = "0",
+  $max_binlog_size = "1G",
 ) inherits percona::params {
     class { percona::server:
         mysql_version                  => $mysql_version,
@@ -265,5 +267,7 @@ class percona (
         log_bin_file                   => $log_bin_file,
         log_warnings                   => $log_warnings,
         log_slave_updates              => $log_slave_updates,
+        max_binlog_files               => $max_binlog_files,
+        max_binlog_size                => $max_binlog_size,
     }
 }
