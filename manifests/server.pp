@@ -50,6 +50,8 @@ class percona::server (
   $log_bin_file = undef,
   $log_warnings = undef,
   $log_slave_updates = false,
+  $max_binlog_files = "0",
+  $max_binlog_size = "1G",
 ) inherits percona::params {
 
   case $::osfamily {
