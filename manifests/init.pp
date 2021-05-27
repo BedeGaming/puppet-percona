@@ -145,6 +145,9 @@
 # [*log_slave_updates*]
 #   Controls the log slave updates (true|false), needs to be set to true for async replication
 #
+# [*innodb_lock_wait_timeout*]
+#   Controls the innoDB lock wait timeout in seconds default is 50
+#   Betbuddy suggest 600
 #
 # === Examples
 #
@@ -214,6 +217,7 @@ class percona (
   $log_slave_updates = false,
   $max_binlog_files = "0",
   $max_binlog_size = "1G",
+  $innodb_lock_wait_timeout = "50",
 ) inherits percona::params {
     class { percona::server:
         mysql_version                  => $mysql_version,
@@ -269,5 +273,6 @@ class percona (
         log_slave_updates              => $log_slave_updates,
         max_binlog_files               => $max_binlog_files,
         max_binlog_size                => $max_binlog_size,
+        innodb_lock_wait_timeout       => $innodb_lock_wait_timeout,
     }
 }

@@ -52,6 +52,7 @@ class percona::server (
   $log_slave_updates = false,
   $max_binlog_files = "0",
   $max_binlog_size = "1G",
+  $innodb_lock_wait_timeout = "50",
 ) inherits percona::params {
 
   case $::osfamily {
